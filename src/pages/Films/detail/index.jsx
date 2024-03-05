@@ -1,10 +1,9 @@
 import React from "react";
 import CommentsContainer from "../../../components/Comments/CommentsContainer";
+import { connect } from "react-redux";
 
 const Film = (props) => {
-  let state = props.store.getState().filmsPage;
-  let film = state.getFilm();
-
+  let film = props.filmsPage.getFilm();
   return (
     <>
       <div
@@ -48,10 +47,22 @@ const Film = (props) => {
 
         <hr className="border-solid border-1px border-[#f3f3f3]" />
 
-        <CommentsContainer state={state} dispatch={props.dispatch} />
+        <CommentsContainer />
       </div>
     </>
   );
 };
 
-export default Film;
+let mapStateToProps = (state) => {
+  return {
+    filmsPage: state.filmsPage,
+  };
+};
+
+let mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+const FilmContainer = connect(mapStateToProps, mapDispatchToProps)(Film);
+
+export default FilmContainer;

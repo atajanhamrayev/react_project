@@ -4,13 +4,12 @@ import Header from "./components/Header";
 import SidebarContainer from "./components/SidebarContainer";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Films from "./pages/Films";
+import FilmsContainer from "./pages/Films";
 import MessageContainer from "./pages/Message/MessageContainer";
 import Film from "./pages/Films/detail";
 import "./App.css";
 
-const App = (props) => {
-  let state = props.store.getState();
+const App = () => {
   return (
     <div className="main mx-auto">
       <Header />
@@ -19,25 +18,9 @@ const App = (props) => {
         <div className="content  w-[620px] float-left text-left">
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route
-              exact
-              path="/films"
-              element={<Films films_data={state.filmsPage.films_data} />}
-            />
-            <Route
-              path="/films/detail/:id"
-              element={<Film dispatch={props.dispatch} store={props.store} />}
-            />
-            <Route
-              exact
-              path="/messages"
-              element={
-                <MessageContainer
-                  store={props.store}
-                  dispatch={props.dispatch}
-                />
-              }
-            />
+            <Route exact path="/films" element={<FilmsContainer />} />
+            <Route path="/films/detail/:id" element={<Film />} />
+            <Route exact path="/messages" element={<MessageContainer />} />
           </Routes>
         </div>
       </div>

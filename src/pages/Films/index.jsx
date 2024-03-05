@@ -1,5 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
 import FilmCard from "../../../src/components/Film/FilmCard";
+
+let mapStateToProps = (state) => {
+  return {
+    films_data: state.filmsPage.films_data,
+  };
+};
+
+let mapDispatchToProps = (dispatch) => {
+  return {};
+};
 
 const Films = (props) => {
   return (
@@ -18,4 +29,7 @@ const Films = (props) => {
     </div>
   );
 };
-export default Films;
+
+const FilmsContainer = connect(mapStateToProps, mapDispatchToProps)(Films);
+
+export default FilmsContainer;

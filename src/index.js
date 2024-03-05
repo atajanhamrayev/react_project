@@ -4,14 +4,16 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./index.css";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-export let rerendererEntireTree = (data) => {
-  debugger;
+export let rerendererEntireTree = () => {
   root.render(
     <Router>
-      <App store={store} dispatch={store.dispatch.bind(store)} />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </Router>
   );
 };
