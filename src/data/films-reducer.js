@@ -83,27 +83,30 @@ let initialState = {
 };
 
 const filmsReducer = (state = initialState, action) => {
-  let stateCopy = { ...state };
-
   switch (action.type) {
     case UPDATE_NEW_COMMENT: {
-      stateCopy.newComment = { ...state.newComment };
-      stateCopy.newComment.name = action.comment.name;
-      stateCopy.newComment.text = action.comment.text;
-      return stateCopy;
-    }
-    case ADD_COMMENT:
-      let newComment = {
-        id: state.comments.length + 1,
-        name: state.newComment.name,
-        text: state.newComment.text,
+      return {
+        ...state,
+        newComment: {
+          name: action.comment.name,
+          text: action.comment.text,
+        },
       };
-
-      stateCopy.newComment = { ...state.newComment };
-      stateCopy.comments.push(newComment);
-
-      stateCopy.newComment = { name: "", text: "" };
-      return stateCopy;
+    }
+    case ADD_COMMENT: {
+      return {
+        ...state,
+        comments: [
+          ...state.comments,
+          {
+            id: state.comments.length + 1,
+            name: state.newComment.name,
+            text: state.newComment.text,
+          },
+        ],
+        newComment: { name: "", text: "" },
+      };
+    }
     default:
       return state;
   }
