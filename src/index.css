@@ -9,11 +9,6 @@
     color: #555;
   }
 
-  p {
-    padding: 0 0 20px 0;
-    line-height: 1.7em;
-  }
-
   input[type="text"],
   input[type="password"],
   input[type="search"] {

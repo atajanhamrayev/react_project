@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="header  bg-[#483d8b] text-[0.8em] mx-auto min-w-[900px]">
+    <header className="header  bg-[#483d8b] text-[0.8em] mx-auto min-w-[900px] mb-[20px]">
       <div className="logo mx-auto w-[880px] pb-[40px]">
         <div className="logo_text">
           <h1 className="font-normal tracking-wider text-7xl font-['century-gothic', Arial, sans-serif] mt-0 mb-0 mr-0 ml-6 pt-[22px] pb-0 px-0 text-white tracking-widest no-underline">
@@ -51,6 +51,18 @@ const Header = () => {
               }
             >
               Сообщения
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/users"
+              className={({ isActive }) =>
+                isActive
+                  ? " text-yellow no-underline hover:no-underline"
+                  : "text-white no-underline hover:no-underline"
+              }
+            >
+              Find Users
             </NavLink>
           </li>
           <li>Рейтинг фильмов</li>

@@ -8,6 +8,7 @@ import Film from "./pages/Films/detail";
 import "./App.css";
 import Footer from "./components/Footer";
 import MessageContainer from "./pages/Message/MessageContainer";
+import UsersContainer from "./pages/Users/UsersContainer";
 
 const App = () => {
   return (
@@ -15,12 +16,13 @@ const App = () => {
       <Header />
       <div className="site_content mx-auto w-[880px] hidden mt-[20px] mb-0 bg-white">
         <SidebarContainer />
-        <div className="content  w-[620px] float-left text-left">
+        <div className="content  w-[620px] float-left text-left p-[20px]">
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/films" element={<FilmsContainer />} />
             <Route path="/films/detail/:id" element={<Film />} />
             <Route exact path="/messages" element={<MessageContainer />} />
+            <Route exact path="/users" element={<UsersContainer />} />
           </Routes>
         </div>
       </div>
