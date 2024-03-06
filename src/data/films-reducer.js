@@ -83,11 +83,10 @@ let initialState = {
 };
 
 const filmsReducer = (state = initialState, action) => {
+  let stateCopy = { ...state };
+
   switch (action.type) {
     case UPDATE_NEW_COMMENT: {
-      let stateCopy = { ...state };
-      stateCopy.films_data = [...state.films_data];
-      stateCopy.comments = [...state.comments];
       stateCopy.newComment = { ...state.newComment };
       stateCopy.newComment.name = action.comment.name;
       stateCopy.newComment.text = action.comment.text;
@@ -99,9 +98,7 @@ const filmsReducer = (state = initialState, action) => {
         name: state.newComment.name,
         text: state.newComment.text,
       };
-      let stateCopy = { ...state };
-      stateCopy.films_data = [...state.films_data];
-      stateCopy.comments = [...state.comments];
+
       stateCopy.newComment = { ...state.newComment };
       stateCopy.comments.push(newComment);
 
