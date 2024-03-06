@@ -2,12 +2,12 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import SidebarContainer from "./components/SidebarContainer";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import FilmsContainer from "./pages/Films";
-import MessageContainer from "./pages/Message/MessageContainer";
 import Film from "./pages/Films/detail";
 import "./App.css";
+import Footer from "./components/Footer";
+import MessageContainer from "./pages/Message/MessageContainer";
 
 const App = () => {
   return (
