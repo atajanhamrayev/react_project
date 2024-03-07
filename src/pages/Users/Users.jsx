@@ -1,62 +1,26 @@
 import React from "react";
+import axios from "axios";
+
 import UsersComponent from "./../../components/UsersComponent";
 
 const Users = (props) => {
-  if (props.users.length === 0) {
-    debugger;
-    props.setUsers([
-      {
-        id: 1,
-        photoURL:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBYKrmeDPyU2DgV_gDSnfXwJrcY9XFB-r8gl-hcjDjAw&s",
-        fullName: "Atajan",
-        status: "I am a boss...",
-        followed: true,
-        location: {
-          cityName: "Ashgabad",
-          country: "Turkmenistan",
-        },
-      },
-      {
-        id: 2,
-        photoURL:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBYKrmeDPyU2DgV_gDSnfXwJrcY9XFB-r8gl-hcjDjAw&s",
-        fullName: "Isa",
-        status: "I am a student of IUHD",
-        followed: true,
-        location: {
-          cityName: "Nigeriya",
-          country: "Africa",
-        },
-      },
-      {
-        id: 3,
-        photoURL:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBYKrmeDPyU2DgV_gDSnfXwJrcY9XFB-r8gl-hcjDjAw&s",
-        fullName: "Tashli",
-        status: "Yatan okuze sygyr yok!",
-        followed: false,
-        location: {
-          cityName: "Dashoguz",
-          country: "Turkmenistan",
-        },
-      },
-      {
-        id: 4,
-        photoURL:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBYKrmeDPyU2DgV_gDSnfXwJrcY9XFB-r8gl-hcjDjAw&s",
-        fullName: "Kakamyrat",
-        status: "No pain No Gain",
-        followed: false,
-        location: {
-          cityName: "Dashoguz",
-          country: "Turkmenistan",
-        },
-      },
-    ]);
-  }
+  let getUsers = () => {
+    if (props.users.length === 0) {
+      axios
+        .get("https://social-network.samuraijs.com/api/1.0/users")
+        .then((response) => {
+          props.setUsers(response.data.items);
+        });
+    }
+  };
   return (
     <div>
+      <button
+        onClick={getUsers}
+        className="border-[2px] border-solid border-[#7268ad] w-[100px] hover:bg-[#7268ad] hover:text-white"
+      >
+        Get Users
+      </button>
       {props.users.map((user) => {
         return (
           <UsersComponent

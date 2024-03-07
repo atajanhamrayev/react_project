@@ -1,24 +1,24 @@
 import React from "react";
+import UserImage from "../assets/images/user.png";
 
 const UsersComponent = (props) => {
   let user = props.user;
-
 
   return (
     <div className="flex flex-row w-full items-center justify-around mb-[5%] bg-[#f9f9f9] p-[5%] gap-[2%]">
       <div className="image w-[15%]">
         <img
-          src={user.photoURL}
+          src={user.photos.small != null ? user.photos.small : UserImage}
           alt="inter"
           className="float-left mr-[2%] rounded-[5px] border-solid border-[5px] border-[#dad7d5]"
         />
       </div>
       <div className="flex flex-col w-[60%]">
-        <h2 className="text-[#136cb2] leading-0">{user.fullName}</h2>
+        <h2 className="text-[#136cb2] leading-0">{user.name}</h2>
         <p>{user.status}</p>
-        <p>
+        {/* <p>
           {user.location.cityName}, {user.location.country}
-        </p>
+        </p> */}
       </div>
       <div className="button  w-[15%]">
         {user.followed ? (
