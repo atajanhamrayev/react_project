@@ -65,7 +65,18 @@ const Header = () => {
               Find Users
             </NavLink>
           </li>
-          <li>Рейтинг фильмов</li>
+          <li>
+            <NavLink
+              to="/profile/:id"
+              className={({ isActive }) =>
+                isActive
+                  ? " text-yellow no-underline hover:no-underline"
+                  : "text-white no-underline hover:no-underline"
+              }
+            >
+              Profile
+            </NavLink>
+          </li>
           <li>Контакты</li>
         </ul>
       </div>

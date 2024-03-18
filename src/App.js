@@ -9,6 +9,7 @@ import "./App.css";
 import Footer from "./components/Footer";
 import MessageContainer from "./pages/Message/MessageContainer";
 import UsersContainer from "./pages/Users/UsersContainer";
+import ProfileContainer from "./pages/Profile/ProfileContainer";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/films/detail/:id" element={<Film />} />
             <Route exact path="/messages" element={<MessageContainer />} />
             <Route exact path="/users" element={<UsersContainer />} />
+            <Route path="/profile/:id" element={<ProfileContainer />} />
           </Routes>
         </div>
       </div>
