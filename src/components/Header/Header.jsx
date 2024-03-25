@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header className="header  bg-[#483d8b] text-[0.8em] mx-auto min-w-[900px] mb-[20px]">
       <div className="logo mx-auto w-[880px] pb-[40px]">
@@ -67,7 +67,7 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              to="/profile/:id"
+              to="/profile"
               className={({ isActive }) =>
                 isActive
                   ? " text-yellow no-underline hover:no-underline"
@@ -79,6 +79,10 @@ const Header = () => {
           </li>
           <li>Контакты</li>
         </ul>
+      </div>
+
+      <div className="loginBlock text-white">
+        {props.isAuth ? props.login : <NavLink to={"/login"}>Login</NavLink>}
       </div>
     </header>
   );
