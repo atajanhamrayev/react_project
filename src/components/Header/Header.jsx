@@ -15,8 +15,8 @@ const Header = (props) => {
         </div>
       </div>
 
-      <div className="menubar mx-auto w-[900px] h-[46px]">
-        <ul className="menu float-left flex mx-auto">
+      <div className="menubar flex flex-row items-center   mx-auto w-[900px] h-[46px]">
+        <ul className="menu float-left justify-around flex mx-auto gap-[30px]">
           <li>
             <NavLink
               to="/"

@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { thunk } from "redux-thunk";
 import filmsReducer from "./films-reducer";
 import messageReducer from "./messages-reducer";
 import usersReducer from "./users-reducer";
@@ -13,6 +14,8 @@ let reducers = combineReducers({
   auth: authReducer,
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunk));
+
+window.store = store;
 
 export default store;

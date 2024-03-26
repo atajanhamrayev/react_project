@@ -1,13 +1,13 @@
 import React from "react";
-import UserImage from "../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
+
+import UserImage from "../../assets/images/user.png";
+
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import Stack from "@mui/material/Stack";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { unfollowUser } from "../../api/api";
-import { followUser } from "./../../api/api";
 
 const Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -18,6 +18,14 @@ const Users = (props) => {
   }
   if (pages.length >= 10) {
   }
+
+  const unfollowUser = (userId) => {
+    props.unfollowUser(userId);
+  };
+
+  const followUser = (userId) => {
+    props.followUser(userId);
+  };
 
   return (
     <div>
@@ -77,25 +85,21 @@ const Users = (props) => {
             <div className="button  w-[15%]">
               {user.followed ? (
                 <button
-                  onClick={() => {
-                    unfollowUser(user.id).then((data) => {
-                      if (data.resultCode === 0) {
-                        props.unfollow(user.id);
-                      }
-                    });
-                  }}
+                  disabled={props.followingInProgress.some(
+                    (id) => id === user.id
+                  )}
+                  onClick={() => unfollowUser(user.id)}
                   className="cursor-pointer w-[100px]  bg-white p-[2%] text-[#7268ad] rounded-[5px] float-right clear-both text-[0.8em] border-[2px] border-solid border-[#7268ad]"
                 >
                   UnFollow
                 </button>
               ) : (
                 <button
+                  disabled={props.followingInProgress.some(
+                    (id) => id === user.id
+                  )}
                   onClick={() => {
-                    followUser(user.id).then((data) => {
-                      if (data.resultCode === 0) {
-                        props.follow(user.id);
-                      }
-                    });
+                    followUser(user.id);
                   }}
                   className="cursor-pointer w-[100px] bg-[#7268ad] p-[2%] text-white rounded-[5px] float-right clear-both text-[0.8em]"
                 >

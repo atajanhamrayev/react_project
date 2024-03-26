@@ -10,6 +10,7 @@ import MessageContainer from "./pages/Message/MessageContainer";
 import UsersContainer from "./pages/Users/UsersContainer";
 import ProfileContainer from "./pages/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from './pages/Login/Login';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route exact path="/messages" element={<MessageContainer />} />
             <Route exact path="/users" element={<UsersContainer />} />
             <Route path="/profile/:id?" element={<ProfileContainer />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
