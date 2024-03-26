@@ -11,6 +11,7 @@ import { SlSocialVkontakte } from "react-icons/sl";
 import { CgWebsite } from "react-icons/cg";
 import UserImage from "../../assets/images/user.png";
 import Preloader from "./../../components/common/Preloader";
+import ProfileStatus from './ProfileStatus';
 
 
 const Profile = (props) => {
@@ -32,6 +33,7 @@ const Profile = (props) => {
       <div className="fullname underline flex flex-col items-center justify-center">
         <h1>{props.profile.fullName}</h1>
         <h3>{props.profile.aboutMe}</h3>
+        <ProfileStatus status="Heyyyyyyyy Yooooooo..." />
       </div>
 
       <div
