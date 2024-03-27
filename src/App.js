@@ -10,15 +10,15 @@ import MessageContainer from "./pages/Message/MessageContainer";
 import UsersContainer from "./pages/Users/UsersContainer";
 import ProfileContainer from "./pages/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from './pages/Login/Login';
+import Login from "./pages/Login/Login";
 
 const App = () => {
   return (
     <div className="main mx-auto">
       <HeaderContainer />
-      <div className="site_content mx-auto w-[880px] hidden mt-[20px] mb-0 bg-white">
+      <div className="mx-auto w-[880px] h-[800px] mt-[20px] mb-0 bg-white">
         <SidebarContainer />
-        <div className="content  w-[620px] float-left text-left p-[20px]">
+        <div className="content min-h-[800px]  w-[620px] float-left text-left p-[20px]">
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/films" element={<FilmsContainer />} />

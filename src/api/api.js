@@ -25,7 +25,19 @@ export const usersAPI = {
       .then((response) => response.data);
   },
   getUserProfile(id) {
+    return profileAPI.getProfile(id);
+  },
+};
+
+export const profileAPI = {
+  getUserProfile(id) {
     return instance.get(`profile/` + id).then((res) => res.data);
+  },
+  getStatus(id) {
+    return instance.get(`profile/status/` + id).then((res) => res.data);
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, { status }).then((res) => res.data);
   },
 };
 
