@@ -2,6 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Header = (props) => {
+  const logout = () => {
+    props.logout();
+  };
   return (
     <header className="header  bg-[#483d8b] text-[0.8em] mx-auto min-w-[900px] mb-[20px]">
       <div className="logo mx-auto w-[880px] pb-[40px]">
@@ -82,7 +85,14 @@ const Header = (props) => {
       </div>
 
       <div className="loginBlock text-white">
-        {props.isAuth ? props.login : <NavLink to={"/login"}>Login</NavLink>}
+        {props.isAuth ? (
+          <div>
+            {props.login}
+            <button onClick={logout}>Logout</button>
+          </div>
+        ) : (
+          <NavLink to={"/login"}>Login</NavLink>
+        )}
       </div>
     </header>
   );

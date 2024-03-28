@@ -1,10 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { login } from "./../../data/auth-reducer";
+import { Navigate } from "react-router-dom";
 
 const Login = (props) => {
   const onSubmit = (formData) => {
-    console.log(formData);
+    props.login(formData.email, formData.password, formData.rememberMe);
   };
+
+  if (props.isAuth === true) return <Navigate to="/profile" />;
   return (
     <div className="min-h-[800px] text-white">
       <LoginReduxForm onSubmit={onSubmit} />
@@ -20,7 +25,7 @@ const LoginForm = (props) => {
     >
       <div>
         <Field
-          name={"login"}
+          name={"email"}
           component={"input"}
           type="text"
           className="rounded-xl"
@@ -49,4 +54,14 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
 
-export default Login;
+class LoginContainer extends Component {
+  render() {
+    return <Login {...this.props} />;
+  }
+}
+
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+});
+
+export default connect(mapStateToProps, { login })(LoginContainer);

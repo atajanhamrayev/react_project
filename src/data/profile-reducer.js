@@ -33,7 +33,6 @@ export const setStatus = (status) => ({
 
 export const updateUserStatus = (status) => (dispatch) => {
   profileAPI.updateStatus(status).then((data) => {
-    debugger;
     if (data.resultCode === 0) dispatch(setStatus(status));
   });
 };

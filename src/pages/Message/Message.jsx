@@ -5,7 +5,6 @@ import { Field, reduxForm } from "redux-form";
 
 const Message = (props) => {
   let addMessage = (message) => {
-    debugger;
     props.addMessage(message.newMessageBody);
   };
 
